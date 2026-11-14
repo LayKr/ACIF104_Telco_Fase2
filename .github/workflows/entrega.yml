@@ -1,0 +1,76 @@
+name: Generar entrega ACIF104 desde IBM Telco
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  construir-y-validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Instalar LibreOffice y dependencias
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libreoffice-writer
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.2,<3"
+          python -m pip install -r requirements.txt
+      - name: Descargar CSV original y verificar SHA-256
+        run: python scripts/download_data.py
+      - name: Entrenar 3 ML, 3 DL, 3 balances y generar SHAP
+        run: python -m src.churn.pipeline
+        env:
+          MPLBACKEND: Agg
+          OMP_NUM_THREADS: '2'
+      - name: Actualizar PDF y DOCX con resultados propios y URL del repositorio
+        run: python scripts/generate_report.py
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Confirmar que las métricas son del IBM oficial y SHAP existe
+        run: |
+          python - <<'PYVERIFY'
+          import json
+          from pathlib import Path
+          meta=json.loads(Path('models/metadata.json').read_text())
+          audit=json.loads(Path('results/leakage_audit.json').read_text())
+          assert meta['dataset_sha256']=='16320c9c1ec72448db59aa0a26a0b95401046bef5d02fd3aeb906448e3055e91'
+          assert meta['rows']==7043 and meta['shap_ok'],meta
+          assert audit['numeric_preprocessor_fit_rows']==audit['rows_train']==4507,audit
+          assert audit['train_validation_overlap']==audit['train_test_overlap']==audit['validation_test_overlap']==0,audit
+          assert any(p.stat().st_size>10000 for p in Path('docs').glob('acif104_s6_grupo*.pdf'))
+          assert Path('results/champion_metrics_by_split.csv').stat().st_size>200
+          assert Path('results/models_test.csv').stat().st_size>100
+          assert Path('results/08_shap.png').stat().st_size>1000
+          assert Path('results/11_matrices_confusion.png').stat().st_size>1000
+          print('CSV original, aislamiento de particiones, métricas, SHAP, matrices y PDF verificados')
+          PYVERIFY
+      - name: Ejecutar pruebas
+        run: python -m pytest -q
+      - name: Publicar artefactos descargables de la entrega
+        uses: actions/upload-artifact@v4
+        with:
+          name: acif104-informe-resultados-codigo
+          path: |
+            docs/*.pdf
+            docs/*.docx
+            results/*.json
+            results/*.csv
+            results/*.png
+            models/*.json
+            models/*.joblib
+            models/*.pt
+            models/*.npy
+          if-no-files-found: error
+          retention-days: 30

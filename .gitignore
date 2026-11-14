@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+tmp/
+data/*.csv
+models/*.joblib
+models/*.pt
+models/*.npy
+*.sqlite3
+.env

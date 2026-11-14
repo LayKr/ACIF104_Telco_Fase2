@@ -1,0 +1,131 @@
+{
+  "rows": 7043,
+  "columns": 21,
+  "source_null_totalcharges": 11,
+  "zero_tenure_imputation": 11,
+  "positive": 1869,
+  "negative": 5174,
+  "positive_rate": 0.2653698707936959,
+  "duplicates_customerID": 0,
+  "missing_after_business_rule": {
+    "customerID": 0,
+    "gender": 0,
+    "SeniorCitizen": 0,
+    "Partner": 0,
+    "Dependents": 0,
+    "tenure": 0,
+    "PhoneService": 0,
+    "MultipleLines": 0,
+    "InternetService": 0,
+    "OnlineSecurity": 0,
+    "OnlineBackup": 0,
+    "DeviceProtection": 0,
+    "TechSupport": 0,
+    "StreamingTV": 0,
+    "StreamingMovies": 0,
+    "Contract": 0,
+    "PaperlessBilling": 0,
+    "PaymentMethod": 0,
+    "MonthlyCharges": 0,
+    "TotalCharges": 0,
+    "Churn": 0
+  },
+  "outliers_iqr": {
+    "tenure": 0,
+    "MonthlyCharges": 0,
+    "TotalCharges": 0
+  },
+  "numeric_descriptives": {
+    "tenure": {
+      "count": 7043.0,
+      "mean": 32.371,
+      "std": 24.559,
+      "min": 0.0,
+      "25%": 9.0,
+      "50%": 29.0,
+      "75%": 55.0,
+      "max": 72.0
+    },
+    "MonthlyCharges": {
+      "count": 7043.0,
+      "mean": 64.762,
+      "std": 30.09,
+      "min": 18.25,
+      "25%": 35.5,
+      "50%": 70.35,
+      "75%": 89.85,
+      "max": 118.75
+    },
+    "TotalCharges": {
+      "count": 7043.0,
+      "mean": 2279.734,
+      "std": 2266.794,
+      "min": 0.0,
+      "25%": 398.55,
+      "50%": 1394.55,
+      "75%": 3786.6,
+      "max": 8684.8
+    }
+  },
+  "categorical_counts": {
+    "PhoneService": {
+      "Yes": 6361,
+      "No": 682
+    },
+    "MultipleLines": {
+      "No": 3390,
+      "Yes": 2971,
+      "No phone service": 682
+    },
+    "InternetService": {
+      "Fiber optic": 3096,
+      "DSL": 2421,
+      "No": 1526
+    },
+    "OnlineSecurity": {
+      "No": 3498,
+      "Yes": 2019,
+      "No internet service": 1526
+    },
+    "OnlineBackup": {
+      "No": 3088,
+      "Yes": 2429,
+      "No internet service": 1526
+    },
+    "DeviceProtection": {
+      "No": 3095,
+      "Yes": 2422,
+      "No internet service": 1526
+    },
+    "TechSupport": {
+      "No": 3473,
+      "Yes": 2044,
+      "No internet service": 1526
+    },
+    "StreamingTV": {
+      "No": 2810,
+      "Yes": 2707,
+      "No internet service": 1526
+    },
+    "StreamingMovies": {
+      "No": 2785,
+      "Yes": 2732,
+      "No internet service": 1526
+    },
+    "Contract": {
+      "Month-to-month": 3875,
+      "Two year": 1695,
+      "One year": 1473
+    },
+    "PaperlessBilling": {
+      "Yes": 4171,
+      "No": 2872
+    },
+    "PaymentMethod": {
+      "Electronic check": 2365,
+      "Mailed check": 1612,
+      "Bank transfer (automatic)": 1544,
+      "Credit card (automatic)": 1522
+    }
+  }
+}

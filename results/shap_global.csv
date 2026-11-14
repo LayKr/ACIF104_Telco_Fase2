@@ -1,0 +1,39 @@
+feature,mean_abs_shap
+num__tenure,0.14148159220657927
+num__TotalCharges,0.06163202494151482
+num__MonthlyCharges,0.05796903388966188
+cat__Contract_Two year,0.04301579062032774
+cat__Contract_Month-to-month,0.040042340289257995
+cat__InternetService_Fiber optic,0.03641489927123868
+cat__InternetService_DSL,0.03181845929425304
+cat__MultipleLines_No,0.02303394005022391
+cat__PaperlessBilling_No,0.018482832522190736
+cat__StreamingTV_No,0.016219105818768353
+cat__PaymentMethod_Credit card (automatic),0.014854593563821919
+cat__TechSupport_Yes,0.012631491067361058
+cat__StreamingTV_Yes,0.012531754637447405
+cat__OnlineSecurity_Yes,0.012496312963208493
+cat__StreamingMovies_No,0.011814145726816652
+cat__OnlineSecurity_No,0.00989810794916053
+cat__StreamingMovies_Yes,0.00974393623465631
+cat__DeviceProtection_No internet service,0.009312227598142238
+cat__OnlineBackup_No internet service,0.009186356249327086
+cat__StreamingTV_No internet service,0.009054776914826932
+cat__InternetService_No,0.008738213743365678
+cat__TechSupport_No,0.00872510295852603
+cat__OnlineSecurity_No internet service,0.008617244105628991
+cat__TechSupport_No internet service,0.008554264001214265
+cat__StreamingMovies_No internet service,0.008531098167506327
+cat__PaymentMethod_Electronic check,0.00819619064120434
+cat__OnlineBackup_Yes,0.0063017945524354345
+cat__PaymentMethod_Bank transfer (automatic),0.006188682678832113
+cat__MultipleLines_Yes,0.005944359334756337
+cat__DeviceProtection_No,0.003534365998693652
+cat__PaymentMethod_Mailed check,0.00299344390573777
+cat__Contract_One year,0.0024849199205674425
+cat__PhoneService_Yes,0.002210506911458639
+cat__OnlineBackup_No,0.0015792713413115796
+cat__PaperlessBilling_Yes,0.0015616825850156412
+cat__DeviceProtection_Yes,0.0011045620089501211
+cat__MultipleLines_No phone service,0.001085336437017578
+cat__PhoneService_No,0.0010583845208568658
